@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cineflix - Liquid Glass</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <header>
+        <div class="header-content">
+            <h1>CINEFLIX</h1>
+            <button class="btn-glass" onclick="openAddMovieModal()">+ Add Movie</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="movieGrid" class="movie-grid">
+            <!-- Movies will be injected here -->
+        </div>
+    </div>
+
+    <!-- Add Movie Modal -->
+    <div id="addMovieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('addMovieModal')">&times;</span>
+            <h2>Add New Movie</h2>
+            <form id="addMovieForm" onsubmit="handleAddMovie(event)">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label>Genre</label>
+                    <input type="text" id="genre" required>
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number" id="year" required>
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <input type="number" step="0.1" min="0" max="10" id="rating" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="description" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn-glass" style="width: 100%">Save Movie</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reviews Modal -->
+    <div id="reviewsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('reviewsModal')">&times;</span>
+            <h2 id="reviewMovieTitle">Reviews</h2>
+            <div id="reviewsList" style="margin: 1.5rem 0; max-height: 300px; overflow-y: auto;">
+                <!-- Reviews injected here -->
+            </div>
+            <form id="addReviewForm" onsubmit="handleAddReview(event)">
+                <input type="hidden" id="reviewMovieId">
+                <div class="form-group">
+                    <input type="text" id="reviewUsername" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="reviewComment" placeholder="Write a review..." required>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="reviewRating" min="1" max="5" placeholder="Rating (1-5)" required>
+                </div>
+                <button type="submit" class="btn-glass" style="width: 100%">Post Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
